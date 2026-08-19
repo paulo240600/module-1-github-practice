@@ -36,6 +36,44 @@ export default function App() {
           Drop in, play games, and meet other students.
         </Text>
       </View>
+
+      <View style={styles.card}>
+        <View style={styles.cardTopRow}>
+          {/* Emoji + Title grouped together */}
+          <View style={styles.titleContainer}>
+            <Text style={styles.cardEmoji}>📚</Text>
+            <Text style={styles.cardTitle}>Study Jam</Text>
+          </View>
+
+          {/* Status Badge */}
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>STUDY NOW</Text>
+          </View>
+        </View>
+
+        <Text style={styles.cardDescription}>
+          Find a study space and get ready for your next exam.
+        </Text>
+      </View>
+
+      <View style={styles.card}>
+        <View style={styles.cardTopRow}>
+          {/* Emoji + Title grouped together */}
+          <View style={styles.titleContainer}>
+            <Text style={styles.cardEmoji}>🍕</Text>
+            <Text style={styles.cardTitle}>Campus Eats</Text>
+          </View>
+
+          {/* Status Badge */}
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>GET FOOD</Text>
+          </View>
+        </View>
+
+        <Text style={styles.cardDescription}>
+          Find food, snacks, and student dining options around campus.
+        </Text>
+      </View>
     </View>
   );
 }
@@ -106,14 +144,14 @@ const styles = StyleSheet.create({
   },
   badge: {
     backgroundColor: '#FF2A8520', // Vibrant pink accent glow
-    borderColor: '#FF2A85',
+    borderColor: '#2ae6ff',
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 12,
   },
   badgeText: {
-    color: '#FF70B4',
+    color: '#70fff1',
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 1,
