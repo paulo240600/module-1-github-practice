@@ -2,7 +2,7 @@
 
 ## Student Information
 
-**Name:** Paulo Quiroz
+**Name:** Paulo Quiroz Bayona
 
 **Course section:** ITSE 1333
 
