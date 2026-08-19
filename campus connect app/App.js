@@ -7,18 +7,23 @@ export default function App() {
     <View style={styles.screen}>
       <StatusBar style="light" />
 
+      {/* Campus Connect Header */}
       <View style={styles.hero}>
         <Text style={styles.kicker}>MODULE 1 BUILD</Text>
         <Text style={styles.title}>Campus Connect</Text>
         <Text style={styles.subtitle}>Your campus. Your day. Your way.</Text>
       </View>
 
-      <View style={styles.starterCard}>
-        <Text style={styles.starterEmoji}>🚀</Text>
-        <Text style={styles.starterTitle}>Your starter app is running.</Text>
-        <Text style={styles.starterText}>
-          Open README.md and begin Build Stage 1. You will build the app one visible step at a time.
+      {/* New Section Heading */}
+      <Text style={styles.sectionHeading}>What's Happening?</Text>
+
+      {/* Game Lounge Card */}
+      <View style={styles.card}>
+        <Text style={styles.cardTitle}>🎮 Game Lounge</Text>
+        <Text style={styles.cardDescription}>
+          Drop in, play games, and meet other students.
         </Text>
+        <Text style={styles.cardBadge}>OPEN TODAY</Text>
       </View>
     </View>
   );
@@ -53,26 +58,35 @@ const styles = StyleSheet.create({
     fontSize: 17,
     marginTop: 8,
   },
-  starterCard: {
+  sectionHeading: {
+    color: '#FFFFFF',
+    fontSize: 22,
+    fontWeight: '800',
+    marginBottom: 16,
+  },
+  card: {
     backgroundColor: '#151B31',
     borderColor: '#2A3357',
     borderRadius: 20,
     borderWidth: 1,
-    padding: 22,
+    padding: 20,
   },
-  starterEmoji: {
-    fontSize: 32,
-  },
-  starterTitle: {
+  cardTitle: {
     color: '#FFFFFF',
     fontSize: 20,
     fontWeight: '800',
-    marginTop: 12,
   },
-  starterText: {
+  cardDescription: {
     color: '#AEB8D4',
     fontSize: 15,
     lineHeight: 22,
     marginTop: 8,
+  },
+  cardBadge: {
+    color: '#5B4BFF',
+    fontSize: 12,
+    fontWeight: '800',
+    letterSpacing: 1.2,
+    marginTop: 14,
   },
 });
