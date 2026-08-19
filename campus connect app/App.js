@@ -14,16 +14,27 @@ export default function App() {
         <Text style={styles.subtitle}>Your campus. Your day. Your way.</Text>
       </View>
 
-      {/* New Section Heading */}
+      {/* Section Heading */}
       <Text style={styles.sectionHeading}>What's Happening?</Text>
 
       {/* Game Lounge Card */}
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>🎮 Game Lounge</Text>
+        <View style={styles.cardTopRow}>
+          {/* Emoji + Title grouped together */}
+          <View style={styles.titleContainer}>
+            <Text style={styles.cardEmoji}>🎮</Text>
+            <Text style={styles.cardTitle}>Game Lounge</Text>
+          </View>
+
+          {/* Status Badge */}
+          <View style={styles.badge}>
+            <Text style={styles.badgeText}>OPEN TODAY</Text>
+          </View>
+        </View>
+
         <Text style={styles.cardDescription}>
           Drop in, play games, and meet other students.
         </Text>
-        <Text style={styles.cardBadge}>OPEN TODAY</Text>
       </View>
     </View>
   );
@@ -39,7 +50,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#5B4BFF',
     borderRadius: 24,
     padding: 24,
-    marginBottom: 20,
+    marginBottom: 24,
   },
   kicker: {
     color: '#C9C4FF',
@@ -64,29 +75,52 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom: 16,
   },
+
+  /* Card Styling */
   card: {
     backgroundColor: '#151B31',
     borderColor: '#2A3357',
-    borderRadius: 20,
     borderWidth: 1,
+    borderRadius: 20,
     padding: 20,
+    marginBottom: 16,
+  },
+  cardTopRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8, // Space between emoji and title
+  },
+  cardEmoji: {
+    fontSize: 24,
   },
   cardTitle: {
     color: '#FFFFFF',
     fontSize: 20,
     fontWeight: '800',
   },
+  badge: {
+    backgroundColor: '#FF2A8520', // Vibrant pink accent glow
+    borderColor: '#FF2A85',
+    borderWidth: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  badgeText: {
+    color: '#FF70B4',
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 1,
+  },
   cardDescription: {
     color: '#AEB8D4',
     fontSize: 15,
     lineHeight: 22,
-    marginTop: 8,
-  },
-  cardBadge: {
-    color: '#5B4BFF',
-    fontSize: 12,
-    fontWeight: '800',
-    letterSpacing: 1.2,
-    marginTop: 14,
   },
 });
