@@ -23,4 +23,13 @@ export const campusActivities = [
     status: 'TOMORROW',
     accent: '#FF9100',
   },
+  // --- 🚀 Your Original 4th Activity ---
+  {
+    id: 'coding-club',
+    emoji: '💻',
+    title: 'Coding Club',
+    description: 'Build cool side projects, practice pair programming, and grab free pizza.',
+    status: 'THIS FRIDAY',
+    accent: '#A855F7', // Vibrant Purple
+  },
 ];
