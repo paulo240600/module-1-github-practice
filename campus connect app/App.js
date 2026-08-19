@@ -1,3 +1,4 @@
+import CampusCard from './src/components/CampusCard';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
@@ -9,7 +10,6 @@ export default function App() {
 
       {/* Campus Connect Header */}
       <View style={styles.hero}>
-        <Text style={styles.kicker}>MODULE 1 BUILD</Text>
         <Text style={styles.title}>Campus Connect</Text>
         <Text style={styles.subtitle}>Your campus. Your day. Your way.</Text>
       </View>
