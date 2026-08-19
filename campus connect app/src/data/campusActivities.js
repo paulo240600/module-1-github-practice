@@ -1,13 +1,26 @@
-// BUILD STAGE 7
-// Do not use this file yet.
-// After you understand hard-coded cards and props, you will move your card data here.
-
-// Your final array will contain records shaped like this:
-// {
-//   id: '1',
-//   emoji: '🎮',
-//   title: 'Game Lounge',
-//   description: 'Drop in, play games, and meet other students.',
-//   status: 'OPEN TODAY',
-//   accent: '#8B5CF6',
-// }
+export const campusActivities = [
+  {
+    id: 'game-lounge',
+    emoji: '🎮',
+    title: 'Game Lounge',
+    description: 'Drop in, play games, and meet other students.',
+    status: 'OPEN TODAY',
+    accent: '#FF2A85',
+  },
+  {
+    id: 'study-jam',
+    emoji: '📚',
+    title: 'Study Jam',
+    description: 'Group study sessions, quiet zones, and free coffee at the library.',
+    status: 'TONIGHT',
+    accent: '#00E5FF',
+  },
+  {
+    id: 'campus-eats',
+    emoji: '🍕',
+    title: 'Campus Eats',
+    description: 'Discover local food trucks and free weekly slice pop-ups on the Quad.',
+    status: 'TOMORROW',
+    accent: '#FF9100',
+  },
+];

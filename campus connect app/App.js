@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import CampusCard from './src/components/CampusCard';
+import { campusActivities } from './src/data/campusActivities';
 
 export default function App() {
-  // State for tracking selected activity (null when none selected)
   const [selectedActivity, setSelectedActivity] = useState(null);
 
   return (
@@ -21,35 +21,18 @@ export default function App() {
       {/* Section Heading */}
       <Text style={styles.sectionHeading}>What's Happening?</Text>
 
-      {/* Card 1: Game Lounge */}
-      <CampusCard
-        emoji="🎮"
-        title="Game Lounge"
-        description="Drop in, play games, and meet other students."
-        status="OPEN TODAY"
-        accent="#FF2A85"
-        onPress={() => setSelectedActivity({ title: 'Game Lounge', emoji: '🎮' })}
-      />
-
-      {/* Card 2: Study Jam */}
-      <CampusCard
-        emoji="📚"
-        title="Study Jam"
-        description="Group study sessions, quiet zones, and free coffee at the library."
-        status="TONIGHT"
-        accent="#00E5FF"
-        onPress={() => setSelectedActivity({ title: 'Study Jam', emoji: '📚' })}
-      />
-
-      {/* Card 3: Campus Eats */}
-      <CampusCard
-        emoji="🍕"
-        title="Campus Eats"
-        description="Discover local food trucks and free weekly slice pop-ups on the Quad."
-        status="TOMORROW"
-        accent="#FF9100"
-        onPress={() => setSelectedActivity({ title: 'Campus Eats', emoji: '🍕' })}
-      />
+      {/* Dynamic Activity Cards via .map() */}
+      {campusActivities.map((activity) => (
+        <CampusCard
+          key={activity.id}
+          emoji={activity.emoji}
+          title={activity.title}
+          description={activity.description}
+          status={activity.status}
+          accent={activity.accent}
+          onPress={() => setSelectedActivity(activity)}
+        />
+      ))}
 
       {/* Selection Panel */}
       <View style={styles.selectionPanel}>
@@ -105,8 +88,6 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom: 16,
   },
-
-  /* Selection Panel Styling */
   selectionPanel: {
     backgroundColor: '#151B31',
     borderColor: '#5B4BFF',
