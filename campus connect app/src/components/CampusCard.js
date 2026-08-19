@@ -1,23 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function CampusCard() {
+export default function CampusCard({ emoji, title, description, status, accent = '#FF2A85' }) {
   return (
     <View style={styles.card}>
       <View style={styles.cardTopRow}>
         <View style={styles.titleContainer}>
-          <Text style={styles.cardEmoji}>🎮</Text>
-          <Text style={styles.cardTitle}>Game Lounge</Text>
+          <Text style={styles.cardEmoji}>{emoji}</Text>
+          <Text style={styles.cardTitle}>{title}</Text>
         </View>
 
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>OPEN TODAY</Text>
+        {/* Dynamic Status Badge with Dynamic Accent Color */}
+        <View style={[styles.badge, { borderColor: accent, backgroundColor: `${accent}20` }]}>
+          <Text style={[styles.badgeText, { color: accent }]}>{status}</Text>
         </View>
       </View>
 
-      <Text style={styles.cardDescription}>
-        Drop in, play games, and meet other students.
-      </Text>
+      <Text style={styles.cardDescription}>{description}</Text>
     </View>
   );
 }
@@ -51,15 +50,12 @@ const styles = StyleSheet.create({
     fontWeight: '800',
   },
   badge: {
-    backgroundColor: '#FF2A8520',
-    borderColor: '#FF2A85',
     borderWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 12,
   },
   badgeText: {
-    color: '#FF70B4',
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 1,
