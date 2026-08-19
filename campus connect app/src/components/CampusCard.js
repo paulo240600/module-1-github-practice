@@ -1,23 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 
-export default function CampusCard({ emoji, title, description, status, accent = '#FF2A85' }) {
+export default function CampusCard({ emoji, title, description, status, accent = '#FF2A85', onPress }) {
   return (
-    <View style={styles.card}>
+    <Pressable 
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.card,
+        pressed && styles.cardPressed
+      ]}
+    >
       <View style={styles.cardTopRow}>
         <View style={styles.titleContainer}>
           <Text style={styles.cardEmoji}>{emoji}</Text>
           <Text style={styles.cardTitle}>{title}</Text>
         </View>
 
-        {/* Dynamic Status Badge with Dynamic Accent Color */}
+        {/* Dynamic Status Badge */}
         <View style={[styles.badge, { borderColor: accent, backgroundColor: `${accent}20` }]}>
           <Text style={[styles.badgeText, { color: accent }]}>{status}</Text>
         </View>
       </View>
 
       <Text style={styles.cardDescription}>{description}</Text>
-    </View>
+    </Pressable>
   );
 }
 
@@ -29,6 +35,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 20,
     marginBottom: 16,
+  },
+  cardPressed: {
+    opacity: 0.8,
+    transform: [{ scale: 0.98 }],
   },
   cardTopRow: {
     flexDirection: 'row',
