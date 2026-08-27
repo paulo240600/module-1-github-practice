@@ -44,16 +44,25 @@ export default function CreatorQueueScreen() {
     // Published -> Published
     setPosts((currentPosts) =>
       currentPosts.map((post) => {
-        if (post.id !== id) return post;
-
-        let nextStatus = post.status;
-        if (post.status === 'Draft') {
-          nextStatus = 'Scheduled';
-        } else if (post.status === 'Scheduled') {
-          nextStatus = 'Published';
+        if (post.id !== id) {
+          return post;
         }
 
-        return { ...post, status: nextStatus };
+        if (post.status === 'Draft') {
+          return {
+            ...post,
+            status: 'Scheduled',
+          };
+        }
+
+        if (post.status === 'Scheduled') {
+          return {
+            ...post,
+            status: 'Published',
+          };
+        }
+
+        return post;
       })
     );
   }
