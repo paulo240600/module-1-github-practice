@@ -69,17 +69,17 @@ export default function CreatorQueueScreen() {
 
   function handleDeletePost(id) {
     // Use filter() to remove the matching published post.
-    setPosts((currentPosts) => currentPosts.filter((post) => post.id !== id));
+    setPosts((currentPosts) =>
+      currentPosts.filter((post) => post.id !== id)
+    );
   }
 
   // Create filteredPosts so All shows everything
   // and each other filter shows only matching statuses.
   const filteredPosts =
-  selectedFilter === 'All'
-    ? posts
-    : posts.filter(
-        (post) => post.status === selectedFilter
-      );
+    selectedFilter === 'All'
+      ? posts
+      : posts.filter((post) => post.status === selectedFilter);
 
   const publishedCount = posts.filter(
     (post) => post.status === 'Published'
@@ -131,11 +131,11 @@ export default function CreatorQueueScreen() {
         ))}
 
         {/* Display the empty-list message only when filteredPosts is empty. */}
-        {filteredPosts.length === 0 && (
+        {filteredPosts.length === 0 ? (
           <Text style={styles.emptyMessage}>
-            No posts found for this filter.
+            No content matches this filter.
           </Text>
-        )}
+        ) : null}
       </View>
     </ScrollView>
   );
