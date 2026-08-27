@@ -11,6 +11,16 @@ const products = [
   },
 
   // Add the Night Shift 02 product object below.
+  {
+  id: 'drop-002',
+  image: require('../assets/images/night-shift.png'),
+  name: 'Night Shift 02',
+  category: 'Street',
+  price: 145,
+  quantity: 4,
+  accent: '#00C4A0',
+},
+
   // Use:
   // id: 'drop-002'
   // image: require('../assets/images/night-shift.png')
@@ -22,6 +32,16 @@ const products = [
 
 
   // Add the Studio Low 03 product object below.
+  {
+  id: 'drop-003',
+  image: require('../assets/images/studio-low.png'),
+  name: 'Studio Low 03',
+  category: 'Lifestyle',
+  price: 110,
+  quantity: 0,
+  accent: '#F58E3C',
+},
+
   // Use:
   // id: 'drop-003'
   // image: require('../assets/images/studio-low.png')
