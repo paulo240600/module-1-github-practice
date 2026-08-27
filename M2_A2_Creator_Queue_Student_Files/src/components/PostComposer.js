@@ -24,11 +24,22 @@ export default function PostComposer({ onAdd }) {
 
   function handleSubmit() {
     // Add the validation code from README.md below.
-
+    if (!title.trim() || !platform.trim() || !type.trim()) {
+      setError('Complete all three fields before adding content.');
+      return;
+    }
 
     // Add the onAdd code from README.md below.
+    onAdd({
+      title: title.trim(),
+      platform: platform.trim(),
+      type: type.trim(),
+    });
 
-
+    setTitle('');
+    setPlatform('');
+    setType('');
+    setError('');
     // Clear all three input fields and the error message below.
 
   }
@@ -40,27 +51,33 @@ export default function PostComposer({ onAdd }) {
 
       {/* Connect the title input to title state. */}
       <TextInput
-        placeholder="Post title"
-        placeholderTextColor={colors.mutedText}
-        style={styles.input}
+      value={title}
+      onChangeText={setTitle}
+      placeholder="Post title"
+      placeholderTextColor={colors.mutedText}
+      style={styles.input}
       />
 
       {/* Connect the platform input to platform state. */}
       <TextInput
-        placeholder="Platform: Instagram, TikTok, YouTube..."
-        placeholderTextColor={colors.mutedText}
-        style={styles.input}
+      value={platform}
+      onChangeText={setPlatform}
+      placeholder="Platform: Instagram, TikTok, YouTube..."
+      placeholderTextColor={colors.mutedText}
+      style={styles.input}
       />
 
       {/* Connect the content type input to type state. */}
       <TextInput
-        placeholder="Type: Reel, Carousel, Video..."
-        placeholderTextColor={colors.mutedText}
-        style={styles.input}
+      value={type}
+      onChangeText={setType}
+      placeholder="Type: Reel, Carousel, Video..."
+      placeholderTextColor={colors.mutedText}
+      style={styles.input}
       />
 
       {/* Display the error message only when error contains text. */}
-
+      {error ? <Text style={styles.error}>{error}</Text> : null}
 
       <Pressable onPress={handleSubmit} style={styles.button}>
         <Text style={styles.buttonText}>ADD TO QUEUE</Text>
