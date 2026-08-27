@@ -55,6 +55,15 @@ const products = [
   // Add one original product below.
   // Use image: require('../assets/images/your-drop.png')
   // Choose your own unique id, name, category, price, and quantity.
+  {
+  id: 'drop-004',
+  image: require('../assets/images/your-drop.png'),
+  name: 'Dota 2 + 04',
+  category: 'Gaming',
+  price: 20,
+  quantity: 45,
+  accent: '#EB569E',
+},
 ];
 
 export default products;
