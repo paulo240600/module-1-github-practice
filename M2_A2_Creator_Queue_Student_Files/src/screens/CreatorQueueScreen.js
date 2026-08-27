@@ -75,9 +75,11 @@ export default function CreatorQueueScreen() {
   // Create filteredPosts so All shows everything
   // and each other filter shows only matching statuses.
   const filteredPosts =
-    selectedFilter === 'All'
-      ? posts
-      : posts.filter((post) => post.status === selectedFilter);
+  selectedFilter === 'All'
+    ? posts
+    : posts.filter(
+        (post) => post.status === selectedFilter
+      );
 
   const publishedCount = posts.filter(
     (post) => post.status === 'Published'
