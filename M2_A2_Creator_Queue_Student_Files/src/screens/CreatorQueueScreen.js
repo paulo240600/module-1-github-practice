@@ -23,7 +23,18 @@ export default function CreatorQueueScreen() {
   function handleAddPost(formValues) {
     // Create a new post object with a unique id and Draft status.
     // Then add the new post to the beginning of the posts array.
+    const newPost = {
+      id: createId(),
+      title: formValues.title,
+      platform: formValues.platform,
+      type: formValues.type,
+      status: 'Draft',
+    };
 
+    setPosts((currentPosts) => [
+      newPost,
+      ...currentPosts,
+    ]);
   }
 
   function handleAdvancePost(id) {
@@ -31,17 +42,33 @@ export default function CreatorQueueScreen() {
     // Draft -> Scheduled
     // Scheduled -> Published
     // Published -> Published
+    setPosts((currentPosts) =>
+      currentPosts.map((post) => {
+        if (post.id !== id) return post;
 
+        let nextStatus = post.status;
+        if (post.status === 'Draft') {
+          nextStatus = 'Scheduled';
+        } else if (post.status === 'Scheduled') {
+          nextStatus = 'Published';
+        }
+
+        return { ...post, status: nextStatus };
+      })
+    );
   }
 
   function handleDeletePost(id) {
     // Use filter() to remove the matching published post.
-
+    setPosts((currentPosts) => currentPosts.filter((post) => post.id !== id));
   }
 
   // Create filteredPosts so All shows everything
   // and each other filter shows only matching statuses.
-  const filteredPosts = posts;
+  const filteredPosts =
+    selectedFilter === 'All'
+      ? posts
+      : posts.filter((post) => post.status === selectedFilter);
 
   const publishedCount = posts.filter(
     (post) => post.status === 'Published'
@@ -79,10 +106,25 @@ export default function CreatorQueueScreen() {
 
       <View style={styles.list}>
         {/* Use filteredPosts.map() to display one PostCard per post. */}
-
+        {filteredPosts.map((post) => (
+          <PostCard
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            platform={post.platform}
+            type={post.type}
+            status={post.status}
+            onAdvance={handleAdvancePost}
+            onDelete={handleDeletePost}
+          />
+        ))}
 
         {/* Display the empty-list message only when filteredPosts is empty. */}
-
+        {filteredPosts.length === 0 && (
+          <Text style={styles.emptyMessage}>
+            No posts found for this filter.
+          </Text>
+        )}
       </View>
     </ScrollView>
   );
