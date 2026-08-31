@@ -14,7 +14,6 @@ export default function SearchResultsScreen() {
   const [cartIds, setCartIds] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // TODO 4: Add the loading useEffect from Step 4.
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -23,7 +22,6 @@ export default function SearchResultsScreen() {
     return () => clearTimeout(timer);
   }, []);
 
-  // TODO 5: Complete the filtered product list from Step 5.
   const visibleProducts = useMemo(() => {
     const clean = query.trim().toLowerCase();
 
@@ -36,7 +34,6 @@ export default function SearchResultsScreen() {
     );
   }, [query]);
 
-  // TODO 6: Update cartIds using the code from Step 6.
   function handleAddToCart(id) {
     setCartIds((current) =>
       current.includes(id)
@@ -45,7 +42,6 @@ export default function SearchResultsScreen() {
     );
   }
 
-  // TODO 7: Return ProductResult with the props from Step 7.
   function renderProduct({ item }) {
     return (
       <ProductResult
@@ -60,7 +56,6 @@ export default function SearchResultsScreen() {
     <SafeAreaView style={styles.screen}>
       <MarketplaceHeader query={query} setQuery={setQuery} cartCount={cartIds.length} />
       
-      {/* TODO 8: Loading conditional and FlatList implementation */}
       {loading ? (
         <LoadingState />
       ) : (
