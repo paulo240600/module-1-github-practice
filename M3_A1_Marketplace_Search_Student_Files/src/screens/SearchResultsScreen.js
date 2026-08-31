@@ -16,15 +16,25 @@ export default function SearchResultsScreen() {
 
   // TODO 4: Add the loading useEffect from Step 4.
   useEffect(() => {
-  const timer = setTimeout(() => {
-    setLoading(false);
-  }, 900);
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 900);
 
-  return () => clearTimeout(timer);
+    return () => clearTimeout(timer);
   }, []);
 
   // TODO 5: Complete the filtered product list from Step 5.
-  const visibleProducts = products;
+  const visibleProducts = useMemo(() => {
+    const clean = query.trim().toLowerCase();
+
+    if (!clean) {
+      return products;
+    }
+
+    return products.filter((product) =>
+      product.name.toLowerCase().includes(clean)
+    );
+  }, [query]);
 
   function handleAddToCart(id) {
     // TODO 6: Update cartIds using the code from Step 6.
@@ -44,4 +54,8 @@ export default function SearchResultsScreen() {
     </SafeAreaView>
   );
 }
-const styles=StyleSheet.create({screen:{backgroundColor:colors.background,flex:1},emptyList:{flexGrow:1}});
+
+const styles = StyleSheet.create({
+  screen: { backgroundColor: colors.background, flex: 1 },
+  emptyList: { flexGrow: 1 },
+});
