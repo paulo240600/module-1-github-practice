@@ -17,15 +17,21 @@ export default function FeedScreen() {
 
   // TODO 4: Add the loading useEffect from Step 5.
   useEffect(() => {
-  const timer = setTimeout(() => {
-    setLoading(false);
+    const timer = setTimeout(() => {
+      setLoading(false);
     }, 900);
 
     return () => clearTimeout(timer);
   }, []);
 
   // TODO 5: Filter the Following feed in Step 6.
-  const visiblePosts = posts;
+  const visiblePosts = useMemo(() => {
+    if (selectedFeed === 'following') {
+      return posts.filter((post) => post.following);
+    }
+
+    return posts;
+  }, [selectedFeed, posts]);
 
   function handleLike(id) {
     // TODO 6: Toggle likedIds in Step 7.
