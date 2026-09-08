@@ -43,7 +43,11 @@ export default function OrderCustomizerScreen() {
   }
 
   const total = useMemo(() => {
-    // TODO 7: Calculate the total in Step 7.
+    const addOnTotal = menuItem.addOns
+      .filter((item) => selectedAddOns.includes(item.id))
+      .reduce((sum, item) => sum + item.price, 0);
+
+    return (menuItem.basePrice + addOnTotal) * quantity;
     return menuItem.basePrice;
   }, [quantity, selectedAddOns]);
 
