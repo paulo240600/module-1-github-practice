@@ -7,7 +7,7 @@ export const stories = [
 {id:'s6',name:'Mike',image:require('../assets/images/story_mk.jpg')},
 ];
 export const posts = [
-{id:'p1',username:'cityframe',location:'Houston, TX',caption:'Late-night city color study.',likes:284,image:require('../assets/images/post1.jpg')},
-{id:'p2',username:'southcampusfgc',location:'Houston, TX',caption:'Practice night. Movement, timing, reactions.',likes:421,image:require('../assets/images/post2.jpg')},
+{id:'p1',username:'God Of War Laufey',location:'Houston, TX',caption:'Late-night city color study.',likes:284,image:require('../assets/images/post1.jpg')},
+{id:'p2',username:'One Piece Film Red',location:'Houston, TX',caption:'Practice night. Movement, timing, reactions.',likes:421,image:require('../assets/images/post2.jpg')},
 {id:'p3',username:'motionlab',location:'Mobile UI Studio',caption:'Motion should explain the interface, not decorate it.',likes:318,image:require('../assets/images/post3.jpg')},
 ];
