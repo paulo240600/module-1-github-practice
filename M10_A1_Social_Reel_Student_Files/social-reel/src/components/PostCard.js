@@ -5,25 +5,25 @@ import { colors } from '../styles/theme';
 
 export default function PostCard({ post }) {
   const [liked, setLiked] = useState(false);
+  const [saved, setSaved] = useState(false); // 1. Add saved state
   
-  // TODO 1: Create an Animated.Value for heart scale starting at 1
   const heartScale = useRef(new Animated.Value(1)).current;
+  const bookmarkScale = useRef(new Animated.Value(1)).current; // 2. Add bookmark scale value
 
   function handleLike() {
     setLiked(v => !v);
-    
-    // TODO 2: Animate the heart so the tap feels acknowledged
     Animated.sequence([
-      Animated.spring(heartScale, {
-        toValue: 1.3,
-        friction: 3,
-        useNativeDriver: true,
-      }),
-      Animated.spring(heartScale, {
-        toValue: 1,
-        friction: 4,
-        useNativeDriver: true,
-      }),
+      Animated.spring(heartScale, { toValue: 1.3, friction: 3, useNativeDriver: true }),
+      Animated.spring(heartScale, { toValue: 1, friction: 4, useNativeDriver: true }),
+    ]).start();
+  }
+
+  // 3. Handle bookmark toggle and animation
+  function handleBookmark() {
+    setSaved(v => !v);
+    Animated.sequence([
+      Animated.spring(bookmarkScale, { toValue: 1.25, friction: 3, useNativeDriver: true }),
+      Animated.spring(bookmarkScale, { toValue: 1, friction: 4, useNativeDriver: true }),
     ]).start();
   }
 
@@ -39,19 +39,32 @@ export default function PostCard({ post }) {
         </View>
         <Ionicons name='ellipsis-horizontal' size={21} color={colors.text} />
       </View>
+
       <Image source={post.image} style={s.image} />
+
       <View style={s.actions}>
         <Pressable onPress={handleLike}>
-          {/* TODO 3: Replaced View with Animated.View and connected scale transform */}
           <Animated.View style={{ transform: [{ scale: heartScale }] }}>
             <Ionicons name={liked ? 'heart' : 'heart-outline'} size={30} color={liked ? colors.accent : colors.text} />
           </Animated.View>
         </Pressable>
+
         <Ionicons name='chatbubble-outline' size={27} color={colors.text} />
         <Ionicons name='paper-plane-outline' size={27} color={colors.text} />
         <View style={s.spacer} />
-        <Ionicons name='bookmark-outline' size={27} color={colors.text} />
+
+        {/* 4. Wrap bookmark in Pressable and Animated.View */}
+        <Pressable onPress={handleBookmark}>
+          <Animated.View style={{ transform: [{ scale: bookmarkScale }] }}>
+            <Ionicons 
+              name={saved ? 'bookmark' : 'bookmark-outline'} 
+              size={27} 
+              color={saved ? colors.accent : colors.text} 
+            />
+          </Animated.View>
+        </Pressable>
       </View>
+
       <Text style={s.likes}>{post.likes + (liked ? 1 : 0)} likes</Text>
       <Text style={s.caption}><Text style={s.username}>{post.username} </Text>{post.caption}</Text>
     </View>
