@@ -6,12 +6,25 @@ import { colors } from '../styles/theme';
 export default function PostCard({ post }) {
   const [liked, setLiked] = useState(false);
   
-  // TODO 1: Create an Animated.Value for heart scale. Normal size should start at 1.
+  // TODO 1: Create an Animated.Value for heart scale starting at 1
   const heartScale = useRef(new Animated.Value(1)).current;
 
   function handleLike() {
     setLiked(v => !v);
-    // TODO 2: Animate the heart so the tap feels acknowledged.
+    
+    // TODO 2: Animate the heart so the tap feels acknowledged
+    Animated.sequence([
+      Animated.spring(heartScale, {
+        toValue: 1.3,
+        friction: 3,
+        useNativeDriver: true,
+      }),
+      Animated.spring(heartScale, {
+        toValue: 1,
+        friction: 4,
+        useNativeDriver: true,
+      }),
+    ]).start();
   }
 
   return (
@@ -29,10 +42,10 @@ export default function PostCard({ post }) {
       <Image source={post.image} style={s.image} />
       <View style={s.actions}>
         <Pressable onPress={handleLike}>
-          {/* TODO 3: Replace this View with Animated.View and connect the scale transform. */}
-          <View>
+          {/* TODO 3: Replaced View with Animated.View and connected scale transform */}
+          <Animated.View style={{ transform: [{ scale: heartScale }] }}>
             <Ionicons name={liked ? 'heart' : 'heart-outline'} size={30} color={liked ? colors.accent : colors.text} />
-          </View>
+          </Animated.View>
         </Pressable>
         <Ionicons name='chatbubble-outline' size={27} color={colors.text} />
         <Ionicons name='paper-plane-outline' size={27} color={colors.text} />
