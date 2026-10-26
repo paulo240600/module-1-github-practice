@@ -19,4 +19,14 @@ export const feedItems = [
     avatar: require('../assets/images/kr.jpg'),
     video: require('../assets/videos/live2.mp4'),
   },
+  {
+    id: 'v3',
+    username: 'Pokemon Event',
+    time: '18 min',
+    caption: 'Come enjoy the event!.',
+    reactions: 899,
+    comments: 156,
+    avatar: require('../assets/images/kr.jpg'),
+    video: require('../assets/videos/kemah_pokemon_event_square.mp4'),
+  },
 ];

@@ -77,6 +77,11 @@ export default function CreateVideoScreen() {
     // TODO 6:
     // Fade the success message into view.
     // Use successOpacity and Animated.timing().
+    Animated.timing(successOpacity, {
+      toValue: 1,
+      duration: 400,
+      useNativeDriver: true,
+    }).start();
   }
 
   const isUploading = uploadState === 'uploading';
@@ -166,15 +171,6 @@ export default function CreateVideoScreen() {
             <Text style={styles.successText}>{message}</Text>
           </Animated.View>
         )}
-
-        <View style={styles.thinkBox}>
-          <Text style={styles.thinkTitle}>THINK ABOUT THE USER</Text>
-          <Text style={styles.thinkText}>
-            Why should the Post button be disabled while uploading? What should
-            happen if permission is denied? How does previewing the video reduce
-            mistakes before posting?
-          </Text>
-        </View>
       </View>
     </SafeAreaView>
   );
