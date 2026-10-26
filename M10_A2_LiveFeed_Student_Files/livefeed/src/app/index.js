@@ -78,10 +78,12 @@ export default function FeedScreen() {
               Wrap this button in Animated.View and
               connect your scale value.
           */}
-          <View style={styles.createButton}>
-            <Text style={styles.createText}>Create a video post</Text>
-            <Ionicons name="videocam-outline" size={22} color={colors.live} />
-          </View>
+          <Animated.View style={{ transform: [{ scale: scaleValue }] }}>
+            <View style={styles.createButton}>
+              <Text style={styles.createText}>Create a video post</Text>
+              <Ionicons name="videocam-outline" size={22} color={colors.live} />
+            </View>
+          </Animated.View>
         </Pressable>
       </View>
 
