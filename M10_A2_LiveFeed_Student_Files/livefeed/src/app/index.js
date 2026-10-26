@@ -27,11 +27,20 @@ export default function FeedScreen() {
     // TODO 2:
     // Add a small press-in animation.
     // Do not make the button bounce dramatically.
+    Animated.spring(scaleValue, {
+      toValue: 0.97,
+      useNativeDriver: true,
+    }).start();
   }
 
   function pressCreateOut() {
     // TODO 3:
     // Return the button to its normal size.
+    Animated.spring(scaleValue, {
+      toValue: 1,
+      friction: 4,
+      useNativeDriver: true,
+    }).start();
   }
 
   async function refreshFeed() {
