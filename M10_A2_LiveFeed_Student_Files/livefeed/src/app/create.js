@@ -46,6 +46,15 @@ export default function CreateVideoScreen() {
     // Store the selected video's URI in selectedUri.
     //
     // If the user cancels, keep the screen usable.
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['videos'],
+      allowsEditing: true,
+      quality: 1,
+    });
+
+    if (!result.canceled && result.assets && result.assets.length > 0) {
+      setSelectedUri(result.assets[0].uri);
+    }
   }
 
   async function postVideo() {
