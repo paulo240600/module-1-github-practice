@@ -21,6 +21,7 @@ export default function FeedScreen() {
   // TODO 1:
   // Create an Animated.Value for the Create Post button.
   // Think about the normal scale value.
+  const scaleValue = useRef(new Animated.Value(1)).current;
 
   function pressCreateIn() {
     // TODO 2:
